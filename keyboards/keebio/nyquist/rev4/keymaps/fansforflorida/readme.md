@@ -41,8 +41,6 @@ You can change any of the above using VIA, but there are a few features that I e
 
 I enabled [Caps Word](https://docs.qmk.fm/#/feature_caps_word). Double tap left Shift to turn on Caps Word. While active, letters are capitalized and `-` becomes `_`. This makes it easier to type `PROGRAM_CONSTANTS`. I never use Caps Lock, but if I really need Caps Lock, I can access it on layer 2.
 
-I have enabled [Auto Shift](https://docs.qmk.fm/#/feature_auto_shift). Tap a key and you get its character. Tap a key, but hold it *slightly* longer and you get its shifted state.
-
 ## Building
 
 If you have not only done so, set up QMK external userspace like this:
