@@ -27,7 +27,7 @@
 #define COMMAND MT(MOD_LGUI,KC_ESC)
 
 // MO(2) if held, Space if tapped
-#define SPC_FN2 LT(4,KC_SPC)
+#define SPC_FN2 LT(2,KC_SPC)
 
 #define LOGOFF LSG(KC_Q)
 
