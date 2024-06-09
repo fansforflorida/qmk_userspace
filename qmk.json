@@ -4,6 +4,7 @@
         ["lily58/rev1", "fansforflorida"],
         ["keebio/foldkb/rev1", "fansforflorida"],
         ["keebio/nyquist/rev4", "fansforflorida"],
-        ["keebio/nyquist/rev3", "fansforflorida"]
+        ["keebio/nyquist/rev3", "fansforflorida"],
+        ["crkbd/rev1", "fansforflorida"]
     ]
 }
