@@ -118,3 +118,34 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
     [9] = { ENCODER_CCW_CW(_______, _______), ENCODER_CCW_CW(_______, _______) }
 };
 #endif
+
+#ifdef COMBO_ENABLE
+const uint16_t PROGMEM combo_bspc[] = { KC_J, KC_K, COMBO_END };
+const uint16_t PROGMEM combo_del[] = { KC_D, KC_F, COMBO_END };
+const uint16_t PROGMEM combo_ent[] = { KC_K, KC_L, COMBO_END };
+const uint16_t PROGMEM combo_esc[] = { KC_Q, KC_W, COMBO_END };
+
+combo_t key_combos[] = {
+  COMBO(combo_bspc, KC_BSPC),
+  COMBO(combo_del, KC_DEL),
+  COMBO(combo_ent, KC_ENT),
+  COMBO(combo_esc, KC_ESC),
+};
+#endif
+
+#ifdef KEY_OVERRIDE_ENABLE
+const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
+
+// Shift + esc = ~
+const key_override_t tilde_esc_override = ko_make_basic(MOD_MASK_SHIFT, KC_ESC, S(KC_GRV));
+
+// GUI + esc = `
+const key_override_t grave_esc_override = ko_make_basic(MOD_MASK_GUI, KC_ESC, KC_GRV);
+
+const key_override_t **key_overrides = (const key_override_t *[]) {
+    &delete_key_override,
+    &tilde_esc_override,
+    &grave_esc_override,
+    NULL
+};
+#endif
