@@ -21,28 +21,29 @@
 #define OSM_SFT OSM(MOD_LSFT)
 
 // Ctrl if held, Esc if tapped
-#define CTRL    MT(MOD_LCTL,KC_ESC)
+#define MT_LCTL MT(MOD_LCTL,KC_ESC)
 
 // Command if held, Esc if tapped
-#define COMMAND MT(MOD_LGUI,KC_ESC)
+#define MT_LCMD MT(MOD_LGUI,KC_ESC)
 
 // MO(2) if held, Space if tapped
 #define SPC_FN2 LT(2,KC_SPC)
 
+// Shift-Command-Q: Log out of your macOS user account. You will be asked to confirm.
 #define LOGOFF LSG(KC_Q)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT_ortho_5x12(
         KC_EQL,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
-        CTRL,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
+        MT_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
         OSM_SFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT,
         KC_LCTL, MO(3),   KC_LGUI, KC_LALT, SPC_FN2, SPC_FN2, KC_SPC,  KC_SPC,  KC_UP,   KC_LEFT, KC_DOWN, KC_RGHT
     ),
     [1] = LAYOUT_ortho_5x12(
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-        COMMAND, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+        MT_LCMD, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
     ),
@@ -126,26 +127,37 @@ const uint16_t PROGMEM combo_ent[] = { KC_K, KC_L, COMBO_END };
 const uint16_t PROGMEM combo_esc[] = { KC_Q, KC_W, COMBO_END };
 
 combo_t key_combos[] = {
-  COMBO(combo_bspc, KC_BSPC),
-  COMBO(combo_del, KC_DEL),
-  COMBO(combo_ent, KC_ENT),
-  COMBO(combo_esc, KC_ESC),
+    COMBO(combo_bspc, KC_BSPC),
+    COMBO(combo_del, KC_DEL),
+    COMBO(combo_ent, KC_ENT),
+    COMBO(combo_esc, KC_ESC),
 };
 #endif
 
-#ifdef KEY_OVERRIDE_ENABLE
-const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
+#ifdef RGB_MATRIX_ENABLE
+bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
+    bool is_oneshot_shift_active = get_oneshot_mods() & MOD_MASK_SHIFT;
 
-// Shift + esc = ~
-const key_override_t tilde_esc_override = ko_make_basic(MOD_MASK_SHIFT, KC_ESC, S(KC_GRV));
+    if (is_oneshot_shift_active || is_caps_word_on() || host_keyboard_led_state().caps_lock) {
+        uint8_t indicator_index;
 
-// GUI + esc = `
-const key_override_t grave_esc_override = ko_make_basic(MOD_MASK_GUI, KC_ESC, KC_GRV);
+        if (host_keyboard_led_state().caps_lock) {
+            indicator_index = g_led_config.matrix_co[2][0]; // my Caps Lock is next to A
+        } else {
+            indicator_index = g_led_config.matrix_co[3][0]; // my left Shift
+        }
 
-const key_override_t **key_overrides = (const key_override_t *[]) {
-    &delete_key_override,
-    &tilde_esc_override,
-    &grave_esc_override,
-    NULL
-};
+        for (uint8_t i = led_min; i < led_max; i++) {
+            if (HAS_FLAGS(g_led_config.flags[i], LED_FLAG_KEYLIGHT)) {
+                if (i == indicator_index) {
+                    rgb_matrix_set_color(i, RGB_WHITE);
+                } else {
+                    rgb_matrix_set_color(i, RGB_OFF);
+                }
+            }
+        }
+    }
+
+    return false;
+}
 #endif
