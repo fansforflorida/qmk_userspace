@@ -43,6 +43,12 @@ KEY-UP   - QMK: KC_D    Event key: d           Code: KeyD          KeyCode: 68 i
 
 ## How to Enable QMK Key Cancellation
 
+First, you will need to check out the Key Cancellation pull request:
+
+```
+gh pr checkout 24000
+```
+
 To use Key Cancellation, add the following to your `rules.mk`
 
 ```make
@@ -63,4 +69,4 @@ const key_cancellation_t PROGMEM key_cancellation_list[] = {
 #endif
 ```
 
-By default, key cancellation is disabled even after adding it to `rules.mk`. You need to use the `KX_CATG` (`0x7C7D`) or `KX_CAON` (`0x7C7B`) keycode to enable it. The status is stored in persistent memory, so you should not need to enable it again.
+By default, Key Cancellation is disabled even after adding it to `rules.mk`. You need to use the `KX_CATG` (`0x7C7D`) or `KX_CAON` (`0x7C7B`) keycode to enable it. The status is stored in persistent memory, so you should not need to enable it again.
