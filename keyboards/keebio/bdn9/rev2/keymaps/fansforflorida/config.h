@@ -1,0 +1,8 @@
+#pragma once
+
+#ifdef RGB_MATRIX_ENABLE
+#    define RGB_MATRIX_KEYPRESSES
+#endif
+
+#define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD
+#define ONESHOT_TIMEOUT 5000
