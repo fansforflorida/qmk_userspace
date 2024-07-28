@@ -43,7 +43,7 @@ KEY-UP   - QMK: KC_D    Event key: d           Code: KeyD          KeyCode: 68 i
 
 ## How to Enable QMK Key Cancellation
 
-First, you will need to check out the Key Cancellation pull request:
+For now, you will need to check out the Key Cancellation pull request:
 
 ```
 gh pr checkout 24000
