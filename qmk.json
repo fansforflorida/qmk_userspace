@@ -1,6 +1,7 @@
 {
     "userspace_version": "1.0",
     "build_targets": [
+        ["1upkeyboards/pi60_rgb_v2", "fansforflorida"],
         ["crkbd/rev1", "fansforflorida"],
         ["keebio/bdn9/rev2", "fansforflorida"],
         ["keebio/foldkb/rev1", "fansforflorida"],
