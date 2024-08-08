@@ -15,6 +15,10 @@
 
 #include QMK_KEYBOARD_H
 
+/* Define indicator LED indices, used for lighting effects  */
+#define CAPS_LED_INDEX 45
+#define WIN_LED_INDEX 77
+
 enum layer_names {
     _BASE,
     _GAME,
@@ -74,17 +78,15 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     }
 
     /* Indicate Caps Lock status */
-    uint8_t caps_lock_index = g_led_config.matrix_co[2][0];
     if (host_keyboard_led_state().caps_lock) {
-        RGB_MATRIX_INDICATOR_SET_COLOR(caps_lock_index, 0xFF, 0xFF, 0xFF);
+        RGB_MATRIX_INDICATOR_SET_COLOR(CAPS_LED_INDEX, 0xFF, 0xFF, 0xFF);
     } else {
-        RGB_MATRIX_INDICATOR_SET_COLOR(caps_lock_index, 0x00, 0x00, 0x00);
+        RGB_MATRIX_INDICATOR_SET_COLOR(CAPS_LED_INDEX, 0x00, 0x00, 0x00);
     }
 
     /* Turn off left Windows key RGB if gaming layer is active */
     if (get_highest_layer(layer_state) == _GAME) {
-        uint8_t lwin_index = g_led_config.matrix_co[4][1];
-        RGB_MATRIX_INDICATOR_SET_COLOR(lwin_index, 0x00, 0x00, 0x00);
+        RGB_MATRIX_INDICATOR_SET_COLOR(WIN_LED_INDEX, 0x00, 0x00, 0x00);
     }
 
     return false;
@@ -99,4 +101,13 @@ const key_cancellation_t PROGMEM key_cancellation_list[] = {
     [0] = {KC_D, KC_A},
     [1] = {KC_A, KC_D}
 };
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+    if (get_highest_layer(state) == _GAME) {
+        key_cancellation_enable();
+    } else {
+        key_cancellation_disable();
+    }
+    return state;
+}
 #endif
