@@ -17,7 +17,6 @@
 
 /* Define indicator LED indices, used for lighting effects  */
 #define CAPS_LED_INDEX 45
-#define WIN_LED_INDEX 77
 
 enum layer_names {
     _GAME,
@@ -77,16 +76,23 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
         }
     }
 
+    /* Turn off RGB for inactive keys (for example, left Windows key on gaming layer) */
+    uint8_t layer = get_highest_layer(layer_state);
+    for (uint8_t row = 0; row < MATRIX_ROWS; ++row) {
+        for (uint8_t col = 0; col < MATRIX_COLS; ++col) {
+            uint8_t index = g_led_config.matrix_co[row][col];
+            if (index >= led_min && index < led_max && index != NO_LED &&
+                keymap_key_to_keycode(layer, (keypos_t){col,row}) == KC_NO) {
+                rgb_matrix_set_color(index, RGB_OFF);
+            }
+        }
+    }
+
     /* Indicate Caps Lock status */
     if (host_keyboard_led_state().caps_lock) {
         RGB_MATRIX_INDICATOR_SET_COLOR(CAPS_LED_INDEX, 255, 255, 255);
     } else {
         RGB_MATRIX_INDICATOR_SET_COLOR(CAPS_LED_INDEX, 0, 0, 0);
-    }
-
-    /* Turn off left Windows key RGB if gaming layer is active */
-    if (get_highest_layer(layer_state) == _GAME) {
-        RGB_MATRIX_INDICATOR_SET_COLOR(WIN_LED_INDEX, 0, 0, 0);
     }
 
     return false;
