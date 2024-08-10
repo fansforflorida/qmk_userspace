@@ -6,8 +6,8 @@ I purchased a 1upkeyboards pi60 RGB V2 60% PCB as a swap-in replacement for my D
 
 Here is a brief summary of my layers:
 
-* Layer 0: Windows base layer.
-* Layer 1: Gaming layer.
+* Layer 0: Gaming layer.
+* Layer 1: Windows base layer.
 * Layer 2: Navigation and Fn layer (activated by holding either the Fn or Caps Lock key). For example:
   * Hold the Fn key and press Backspace for Delete.
   * Hold the Fn key and press a number key for the corresponding function key.
