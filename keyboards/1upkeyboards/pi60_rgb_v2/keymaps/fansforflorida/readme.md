@@ -6,34 +6,28 @@ I purchased a 1upkeyboards pi60 RGB V2 60% PCB as a swap-in replacement for my D
 
 Here is a brief summary of my layers:
 
-* Layer 0: Gaming layer.
-* Layer 1: Windows base layer.
-* Layer 2: Navigation and Fn layer (activated by holding either the Fn or Caps Lock key). For example:
-  * Hold the Fn key and press Backspace for Delete.
-  * Hold the Fn key and press a number key for the corresponding function key.
-For example, Fn+2 for F2, Fn+5 for F5, and so on. The `-
- and `=` keys are F11 and F12.
-  * Hold the Fn key and press the quote key for backquote. (Hold Shift for `~`.)
-  * Hold the Fn key and press M, <, and > for mute, volume down, and volume up.
-  * Hold the Fn key and press H and N for PgUp and PgDn.
-  * Hold the Fn key and press U and O for Home and End.
-  * Hold the Fn key and use IJKL for arrow keys.
-
-## Layout
-
-The right Shift, Alt, Windows, and Ctrl keys double as arrow keys, even without holding Fn. For example, hold right Shift for Shift, but tap it for up arrow.
-
-The Caps Lock key doubles as the Fn key. Tap it for Caps Lock, but Hold it for Fn.
-
-For example, hold Caps Lock and press Backspace for Delete.
-
-Hold the Fn key (or Caps Lock) and press the left Windows key to toggle the gaming layer. This
-
-has the following e ects:
+Layer 0 is the gaming layer.
 
 * The left Windows key is disabled.
 * The Caps Lock key works as Caps Lock.
 * The right Shift, Alt, Windows, and Ctrl keys are arrow keys.
+
+Layer 1 is the Windows layer.
+
+* The right Shift, Alt, Windows, and Ctrl keys use [Mod-Tap](https://docs.qmk.fm/mod_tap) to double as arrow keys. For example, hold right Shift for Shift, but tap it for up arrow.
+* The Caps Lock key uses [Layer-Tap](https://docs.qmk.fm/feature_layers#switching-and-toggling-layers) to double as the Fn key. Tap it for Caps Lock, but Hold it for Fn. For example, hold Caps Lock and press Backspace for Delete.
+
+Layer 2 is the navigation and Fn layer. Activate it by holding the Fn key (or Caps Lock key from the Windows layer). For example:
+
+* Hold the Fn key and press Backspace for Delete.
+* Hold the Fn key and press a number key for the corresponding function key. For example, Fn+2 for F2, Fn+5 for F5, and so on. The `-`  and `=` keys are F11 and F12.
+* Hold the Fn key and press the quote key for backquote. (Hold Shift for `~`.)
+* Hold the Fn key and press M, `<`, and `>` for mute, volume down, and volume up.
+* Hold the Fn key and press H and N for PgUp and PgDn.
+* Hold the Fn key and press U and O for Home and End.
+* Hold the Fn key and use IJKL for arrow keys.
+
+Hold the Fn key (or Caps Lock) and press the left Windows key to toggle the gaming layer.
 
 ## Features
 
