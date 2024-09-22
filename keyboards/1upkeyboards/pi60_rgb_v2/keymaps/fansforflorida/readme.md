@@ -51,7 +51,13 @@ Razer added SOCD to their mechanical keyboards, calling it [Snap Tap](https://yo
 
 Wooting followed Razer and added SOCD to their mechanical keyboards. They also added a similar feature to their analog Hall effect keyboards called [Rappy Snappy](https://youtu.be/Uzv4bmtir3k) that activates the key that is pressed further.
 
-QMK has a pull request for a similar feature called [Key Cancellation](https://github.com/qmk/qmk_firmware/pull/24000).
+QMK has a pull request for a similar feature called [Key Cancellation](https://github.com/qmk/qmk_firmware/pull/24000). However, see the discussion in [issue 24216](https://github.com/qmk/qmk_firmware/issues/24216).
+
+Use the following command to use this branch:
+
+```
+gh pr checkout 24000
+```
 
 Consider the following scenario:
 
@@ -101,4 +107,4 @@ Flash the firmware like this:
 qmk flash -kb 1upkeyboards/pi60_rgb_v2 -km fansforflorida
 ```
 
-Press Fn+Right Shift to enter the bootloader.
+Press Fn+Right Ctrl to enter the bootloader.
