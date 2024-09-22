@@ -67,19 +67,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 };
 
-#ifdef KEY_OVERRIDE_ENABLE
-// Shift + esc = ~
-const key_override_t tilde_esc_override = ko_make_basic(MOD_MASK_SHIFT, KC_ESC, S(KC_GRV));
-
-// GUI + esc = `
-const key_override_t grave_esc_override = ko_make_basic(MOD_MASK_GUI, KC_ESC, KC_GRV);
-
-const key_override_t *key_overrides[] = {
-    &tilde_esc_override,
-    &grave_esc_override
-};
-#endif
-
 #ifdef RGB_MATRIX_ENABLE
 void keyboard_post_init_user(void) {
     rgb_matrix_set_flags(LED_FLAG_ALL & ~LED_FLAG_UNDERGLOW);

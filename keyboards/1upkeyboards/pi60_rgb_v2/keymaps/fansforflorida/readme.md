@@ -33,9 +33,10 @@ Hold the Fn key (or Caps Lock) and press the left Windows key to toggle the gami
 
 ### RGB Matrix Lighting
 
+The 1upkeyboards pi60 RGB V2 has built-in underglow RGB. However, the Ducky One 2 Mini Frozen Llama case is opaque, so the underglow RGB matrix LEDs are turned off by calling `rgb_matrix_set_flags` from `keyboard_post_init_user`.
+
 The `rgb_matrix_indicators_advanced_user` function performs the following tasks:
 
-* The 1upkeyboards pi60 RGB V2 has built-in underglow RGB. However, the Ducky One 2 Mini Frozen Llama case is opaque, so the underglow RGB matrix LEDs are turned off.
 * The RGB matrix LED for Caps Lock is either off or on (fully white) to indicate the Caps Lock status.
 * If the gaming layer is currently active, the RGB matrix LED for the left Windows key is turned off, since that key is disabled on that layer.
 
