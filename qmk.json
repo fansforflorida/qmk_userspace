@@ -1,5 +1,5 @@
 {
-    "userspace_version": "1.0",
+    "userspace_version": "1.1",
     "build_targets": [
         ["1upkeyboards/pi60_rgb_v2", "fansforflorida"],
         ["crkbd/rev1", "fansforflorida"],
@@ -7,6 +7,7 @@
         ["keebio/foldkb/rev1", "fansforflorida"],
         ["keebio/nyquist/rev4", "fansforflorida"],
         ["keebio/quefrency/rev3", "fansforflorida"],
-        ["lily58/rev1", "fansforflorida"]
+        ["lily58/rev1", "fansforflorida"],
+        ["magic_force/mf17", "fansforflorida"]
     ]
 }
