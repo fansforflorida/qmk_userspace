@@ -4,8 +4,8 @@
 
 Here is a brief summary of my layers:
 
-* Layer 0: Windows/Linux layout. The key next to A is Ctrl.
-* Layer 1: Mac layout. The key next to A is Command.
+* Layer 0: Mac layout. The key next to A is Command.
+* Layer 1: Windows/Linux layout. The key next to A is Ctrl.
 * Layer 2: Navigation and Fn layer (activated by holding the left space key). For example:
   * F1-F10 are on the number row
   * Del is on Backspace
@@ -25,6 +25,20 @@ My 2u space key is zero, and the up arrow key is dot. It is not a full numpad, b
 
 ## Layout
 
+```
+┌───┬───┬───┬───┬───┬───┐   ┌───┬───┬───┬───┬───┬───┐
+│ =+│ 1!│ 2@│ 3#│ 4$│ 5%│   │ 6^│ 7&│ 8*│ 9(│ 0)│ -_│
+├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
+│Tab│ Q │ W │ E │ R │ T │   │ Y │ U │ I │ O │ P │ BS│
+├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
+│Cmd│ A │ S │ D │ F │ G │   │ H │ J │ K │ L │ ;:│ '"│
+├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
+│Sft│ Z │ X │ C │ V │ B │   │ N │ M │ ,<│ .>│ /?│Ent│
+├───┼───┼───┼───┼───┴───┤   ├───┴───┼───┼───┼───┼───┤
+│Ctl│ Fn│Win│Alt│spaceFN│   │ space │ up│lft│dwn│rht│
+└───┴───┴───┴───┴───────┘   └───────┴───┴───┴───┴───┘
+```
+
 My Nyquist layout is based on my FoldKB layout:
 
 * The `=` key is at top left next to 1.
@@ -35,19 +49,21 @@ My Nyquist layout is based on my FoldKB layout:
 
 I use my left hand for modifiers, so I put those keys on the left half.
 
+The left Shift key is a [one shot key](https://docs.qmk.fm/one_shot_keys). For example, you can type a capital A character by first pressing and releasing Shift, and then pressing and releasing A.
+
 I normally use my right thumb for spacebar, so I made the left spacebar dual function using [Layer-Tap](https://docs.qmk.fm/feature_layers?id=switching-and-toggling-layers). Hold it to access layer 2, but tap it for space. This way, I can hold spacebar with my left thumb and use IJKL for arrows, H and N for PgUp and PgDn, and U and O for Home and End with my right hand. This puts the navigation keys right on the home row.
 
 I like that the FoldKB has Home, End, PgUp, and PgDn keys on the left half of the keyboard. This makes it easy to use my left hand to navigate a long document and leaves my right hand free to use the mouse. I added those keys on layer 2 on ESDF. This way, I can hold spacebar with my left thumb and use E and D to PgUp and PgDn in a document.
 
 Dedicated arrow keys are at the bottom right of the keyboard. Instead of the vim arrangement of left, down, up, right, I arranged my arrow keys like this: up, left, down, right. The left, down, and right arrow keys are in the same order as an inverted T arrow cluster; only up is in a different position.
 
+You can change any of the above using VIA, but there are a few features that I enabled in the firmware:
+
 ## Features
 
-### One Shot Keys
+### OS Detection
 
-The left Shift key is a [one shot key](https://docs.qmk.fm/one_shot_keys). For example, you can type a capital A character by first pressing and releasing Shift, and then pressing and releasing A.
-
-You can change any of the above using VIA, but there are a few features that I enabled in the firmware:
+During USB setup, the keyboard makes a best guess at the host OS based on OS specific behavior. If the OS is neither macOS nor iOS, the keyboard activates layer 1.
 
 ### Caps Word
 

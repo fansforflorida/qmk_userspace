@@ -32,31 +32,38 @@
 // Shift-Command-Q: Log out of your macOS user account. You will be asked to confirm.
 #define LOGOFF LSG(KC_Q)
 
+enum layer_names {
+    _MAC,
+    _WIN,
+    _FN,
+    _NUM
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [0] = LAYOUT_ortho_5x12(
+    [_MAC] = LAYOUT_ortho_5x12(
         KC_EQL,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
-        MT_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
+        MT_LCMD, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
         OSM_SFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT,
         KC_LCTL, MO(3),   KC_LGUI, KC_LALT, SPC_FN2, SPC_FN2, KC_SPC,  KC_SPC,  KC_UP,   KC_LEFT, KC_DOWN, KC_RGHT
     ),
-    [1] = LAYOUT_ortho_5x12(
+    [_WIN] = LAYOUT_ortho_5x12(
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-        MT_LCMD, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+        MT_LCTL, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
     ),
-    [2] = LAYOUT_ortho_5x12(
-        _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  _______,
-        _______, LOGOFF,  _______, KC_PGUP, _______, _______, _______, KC_HOME, KC_UP,   KC_END,  _______, KC_DEL,
-        KC_CAPS, _______, KC_HOME, KC_PGDN, KC_END,  _______, KC_PGUP, KC_LEFT, KC_DOWN, KC_RGHT, _______, KC_GRV,
+    [_FN] = LAYOUT_ortho_5x12(
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+        _______, LOGOFF,  _______, MS_WHLU, _______, _______, _______, KC_HOME, KC_UP,   KC_END,  _______, KC_DEL,
+        KC_CAPS, _______, KC_HOME, MS_WHLD, KC_END,  _______, KC_PGUP, KC_LEFT, KC_DOWN, KC_RGHT, _______, KC_GRV,
         _______, _______, _______, _______, _______, _______, KC_PGDN, _______, KC_LBRC, KC_RBRC, KC_BSLS, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
     ),
-    [3] = LAYOUT_ortho_5x12(
-        _______, KC_F11,  KC_F12,  _______, _______, _______, _______, _______, _______, _______, _______, _______,
-        _______, _______, _______, _______, _______, _______, KC_7,    KC_8,    KC_9,    _______, _______, KC_INS,
+    [_NUM] = LAYOUT_ortho_5x12(
+        KC_F12,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
+        KC_INS,  _______, _______, _______, _______, _______, KC_7,    KC_8,    KC_9,    _______, _______, _______,
         _______, _______, _______, _______, _______, _______, KC_4,    KC_5,    KC_6,    _______, _______, _______,
         _______, _______, _______, _______, _______, _______, KC_1,    KC_2,    KC_3,    _______, _______, _______,
         _______, _______, TG(1),   _______, _______, _______, KC_0,    KC_0,    KC_DOT,  _______, _______, _______
@@ -105,21 +112,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     )
 };
 
-#ifdef ENCODER_MAP_ENABLE
-const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
-    [0] = { ENCODER_CCW_CW(_______, _______), ENCODER_CCW_CW(_______, _______) },
-    [1] = { ENCODER_CCW_CW(_______, _______), ENCODER_CCW_CW(_______, _______) },
-    [2] = { ENCODER_CCW_CW(_______, _______), ENCODER_CCW_CW(_______, _______) },
-    [3] = { ENCODER_CCW_CW(_______, _______), ENCODER_CCW_CW(_______, _______) },
-    [4] = { ENCODER_CCW_CW(_______, _______), ENCODER_CCW_CW(_______, _______) },
-    [5] = { ENCODER_CCW_CW(_______, _______), ENCODER_CCW_CW(_______, _______) },
-    [6] = { ENCODER_CCW_CW(_______, _______), ENCODER_CCW_CW(_______, _______) },
-    [7] = { ENCODER_CCW_CW(_______, _______), ENCODER_CCW_CW(_______, _______) },
-    [8] = { ENCODER_CCW_CW(_______, _______), ENCODER_CCW_CW(_______, _______) },
-    [9] = { ENCODER_CCW_CW(_______, _______), ENCODER_CCW_CW(_______, _______) }
-};
-#endif
-
 #ifdef COMBO_ENABLE
 const uint16_t PROGMEM combo_bspc[] = { KC_J, KC_K, COMBO_END };
 const uint16_t PROGMEM combo_del[] = { KC_D, KC_F, COMBO_END };
@@ -158,6 +150,15 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
         }
     }
 
+    return false;
+}
+#endif
+
+#ifdef OS_DETECTION_ENABLE
+bool process_detected_host_os_user(os_variant_t detected_os) {
+    if (detected_os != OS_MACOS && detected_os != OS_IOS) {
+        layer_on(_WIN);
+    }
     return false;
 }
 #endif
