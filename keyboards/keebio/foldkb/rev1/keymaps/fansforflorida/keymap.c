@@ -53,8 +53,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_NAV] = LAYOUT(
         RGB_TOG, _______, _______, _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______, _______, _______, _______,
-        _______,          _______, _______, _______, KC_PGUP, _______, _______,     _______, KC_HOME, KC_UP,   KC_END,  _______, _______, _______, _______,
-        _______,          _______, _______, KC_HOME, KC_PGDN, KC_END,  _______,     KC_PGUP, KC_LEFT, KC_DOWN, KC_RGHT, _______, KC_GRV,           _______,
+        _______,          _______, _______, _______, MS_WHLU, _______, _______,     _______, KC_HOME, KC_UP,   KC_END,  _______, _______, _______, _______,
+        _______,          _______, _______, KC_HOME, MS_WHLD, KC_END,  _______,     KC_PGUP, KC_LEFT, KC_DOWN, KC_RGHT, _______, KC_GRV,           _______,
         _______,          _______, _______, _______, _______, _______, _______,     KC_PGDN, _______, KC_LBRC, KC_RBRC, KC_BSLS, _______, _______,
         _______,          _______, _______, _______, _______, _______, _______,     KC_BSPC, KC_BSPC,          _______, _______, _______, _______
     )
@@ -81,4 +81,13 @@ combo_t key_combos[] = {
   COMBO(combo_ent, KC_ENT),
   COMBO(combo_esc, KC_ESC),
 };
+#endif
+
+#ifdef OS_DETECTION_ENABLE
+bool process_detected_host_os_user(os_variant_t detected_os) {
+    if (detected_os != OS_MACOS && detected_os != OS_IOS) {
+        layer_on(_WIN);
+    }
+    return false;
+}
 #endif
