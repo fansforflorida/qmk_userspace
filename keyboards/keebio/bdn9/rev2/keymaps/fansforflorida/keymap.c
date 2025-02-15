@@ -69,9 +69,9 @@ uint8_t rgb_to_hue(uint8_t rgb_mask) {
     if (c_max == r) {
         h = 60 * ((g - b + 6) % 6);
     } else if (c_max == g) {
-        h = 60 * (b - r + 2);
+        h = 60 * (b + 2);
     } else if (c_max == b) {
-        h = 60 * ((r - g) + 4);
+        return 170;
     }
     return h * 255 / 360;
 }
