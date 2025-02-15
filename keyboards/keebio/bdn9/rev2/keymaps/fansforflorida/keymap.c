@@ -65,7 +65,7 @@ uint8_t rgb_to_hue(uint8_t rgb_mask) {
     uint8_t g = (rgb_mask & 0b010) >> 1;
     uint8_t b = rgb_mask & 0b001;
     uint8_t c_max = r | g | b;
-    int h;
+    uint16_t h;
     if (c_max == r) {
         h = 60 * ((g - b + 6) % 6);
     } else if (c_max == g) {
