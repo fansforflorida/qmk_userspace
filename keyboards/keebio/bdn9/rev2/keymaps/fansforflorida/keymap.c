@@ -76,15 +76,24 @@ uint8_t rgb_to_hue(uint8_t rgb_mask) {
     return h * 255 / 360;
 }
 
-bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
-    uint8_t layer = get_highest_layer(layer_state | default_layer_state);
+hsv_t get_layer_hsv(uint8_t layer) {
     hsv_t hsv = {
         .h = rgb_to_hue(layer + 1),
         .s = 255,
         .v = rgb_matrix_get_val()
     };
-    rgb_t rgb = hsv_to_rgb(hsv);
-    rgb_matrix_set_color_all(rgb.r, rgb.g, rgb.b);
-    return false;
+    return hsv;
+}
+
+void keyboard_post_init_user(void) {
+    hsv_t hsv = get_layer_hsv(0);
+    rgb_matrix_mode_noeeprom(RGB_MATRIX_SOLID_COLOR);
+    rgb_matrix_sethsv_noeeprom(hsv.h, hsv.s, hsv.v);
+}
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+    hsv_t hsv = get_layer_hsv(get_highest_layer(state));
+    rgb_matrix_sethsv_noeeprom(hsv.h, hsv.s, hsv.v);
+    return state;
 }
 #endif
