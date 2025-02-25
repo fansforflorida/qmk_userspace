@@ -15,6 +15,8 @@
 
 #include QMK_KEYBOARD_H
 
+#define UNDERGLOW_ENABLE
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT(
         KC_0,    TO(1),   KC_0,
@@ -86,6 +88,9 @@ hsv_t get_layer_hsv(uint8_t layer) {
 }
 
 void keyboard_post_init_user(void) {
+#ifndef UNDERGLOW_ENABLE
+    rgb_matrix_set_flags_noeeprom(LED_FLAG_ALL & ~LED_FLAG_UNDERGLOW);
+#endif
     hsv_t hsv = get_layer_hsv(0);
     rgb_matrix_mode_noeeprom(RGB_MATRIX_SOLID_COLOR);
     rgb_matrix_sethsv_noeeprom(hsv.h, hsv.s, hsv.v);
