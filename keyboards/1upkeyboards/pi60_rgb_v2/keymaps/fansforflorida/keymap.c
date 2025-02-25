@@ -69,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 #ifdef RGB_MATRIX_ENABLE
 void keyboard_post_init_user(void) {
-    rgb_matrix_set_flags(LED_FLAG_ALL & ~LED_FLAG_UNDERGLOW);
+    rgb_matrix_set_flags_noeeprom(LED_FLAG_ALL & ~LED_FLAG_UNDERGLOW);
 }
 
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
