@@ -91,7 +91,7 @@ void keyboard_post_init_user(void) {
 #ifndef UNDERGLOW_ENABLE
     rgb_matrix_set_flags_noeeprom(LED_FLAG_ALL & ~LED_FLAG_UNDERGLOW);
 #endif
-    hsv_t hsv = get_layer_hsv(0);
+    hsv_t hsv = get_layer_hsv(get_highest_layer(default_layer_state));
     rgb_matrix_mode_noeeprom(RGB_MATRIX_SOLID_COLOR);
     rgb_matrix_sethsv_noeeprom(hsv.h, hsv.s, hsv.v);
 }
