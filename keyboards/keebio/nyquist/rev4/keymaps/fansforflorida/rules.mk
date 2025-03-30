@@ -4,5 +4,3 @@ ENCODER_MAP_ENABLE = no
 LTO_ENABLE = yes
 OS_DETECTION_ENABLE = yes
 VIA_ENABLE = yes
-
-SRC += sync.c

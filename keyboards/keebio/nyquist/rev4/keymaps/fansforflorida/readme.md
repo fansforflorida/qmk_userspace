@@ -49,21 +49,15 @@ My Nyquist layout is based on my FoldKB layout:
 
 I use my left hand for modifiers, so I put those keys on the left half.
 
-The left Shift key is a [one shot key](https://docs.qmk.fm/one_shot_keys). For example, you can type a capital A character by first pressing and releasing Shift, and then pressing and releasing A.
-
 I normally use my right thumb for spacebar, so I made the left spacebar dual function using [Layer-Tap](https://docs.qmk.fm/feature_layers?id=switching-and-toggling-layers). Hold it to access layer 2, but tap it for space. This way, I can hold spacebar with my left thumb and use IJKL for arrows, H and N for PgUp and PgDn, and U and O for Home and End with my right hand. This puts the navigation keys right on the home row.
 
-I like that the FoldKB has Home, End, PgUp, and PgDn keys on the left half of the keyboard. This makes it easy to use my left hand to navigate a long document and leaves my right hand free to use the mouse. I added those keys on layer 2 on ESDF. This way, I can hold spacebar with my left thumb and use E and D to PgUp and PgDn in a document.
+My FoldKB has a split right Shift key. The 1u
 
 Dedicated arrow keys are at the bottom right of the keyboard. Instead of the vim arrangement of left, down, up, right, I arranged my arrow keys like this: up, left, down, right. The left, down, and right arrow keys are in the same order as an inverted T arrow cluster; only up is in a different position.
 
 You can change any of the above using VIA, but there are a few features that I enabled in the firmware:
 
 ## Features
-
-### OS Detection
-
-During USB setup, the keyboard makes a best guess at the host OS based on OS specific behavior. If the OS is neither macOS nor iOS, the keyboard activates layer 1.
 
 ### Caps Word
 
@@ -78,24 +72,21 @@ I have defined the following combos:
 * K + L emits Enter
 * Q + W emits Esc
 
+The one thing I liked when I used an X-Bows keyboard was the extra Backspace key between G and H. Instead of having to reach way up to the corner to hit Backspace, I could hit it with my right index finger. When I used a Lily58, I put Backspace on the extra key next to H and N. That way, I could still hit Backspace with my right index finger. I put Del on the extra key next to G and B, since is seemed symmetrical. J+K and D+F are the same idea, except I do not need to move my hand.
+
 Notice that most of these keys are on the home row, so I do not need to move my hand to reach them. They are also not letters that you are likely to type together in a word, which reduces misfires. L+K is the only exception, but I would have to press them within 50ms of each other, so in practice, typing words like "walk" do not accidentally send Enter.
 
-The one thing I liked when I used an X-Bows keyboard was the extra Backspace key between G and H. When I built a Lily58 keyboard, I put Backspace there and put Del on the other half. J+K and D+F are the same idea, except I do not need to move my hand.
+### Mouse Keys
 
-K+L being Enter is nice because Enter is one row lower than normal; it is next to the / key. K+L is easier to reach.
+I like that the FoldKB has Home, End, PgUp, and PgDn keys on the left half of the keyboard. This makes it easy to use my left hand to navigate a long document and leaves my right hand free to use the mouse. Inspired by this, I made the ESDF keys on layer 2 navigation keys. E and D are mouse wheel up and down, and S and F are home and end. This way, I can hold spacebar with my left thumb and use E and D to scroll through a document.
+
+### OS Detection
+
+During USB setup, the keyboard makes a best guess at the host OS based on OS specific behavior. If the OS is neither macOS nor iOS, the keyboard activates layer 1.
 
 ### RGB Matrix Lighting
 
-I use RGB matrix lighting to visually indicate the status of Caps Lock, one shot shift, and Caps Word. This is done in the `rgb_matrix_indicators_advanced_user` method in `keymap.c`. To minimize power draw, all LEDs are turned off except for the indicated key:
-
-* Shift for Caps Word and one shot Shift
-* the key next to A for Caps Lock.
-
-Normally, only the master half (the half plugged into the computer) is aware of the status of modifiers, Caps Word, and Caps Lock. Therefore, only the master half would indicate those states in the RGB lighting. Some changes were made to sync the state between both halves of the split keyboard:
-
-* Defining `SPLIT_LED_STATE_ENABLE` in the `config.h` file enables syncing the Caps Lock state.
-* Defining `SPLIT_MODS_ENABLE` in the `config.h` file enables syncing modifier state (including One Shot).
-* Custom code was required to sync the state of Caps Word. See `sync.c`.
+Only RGB underglow is enabled.
 
 ## Building
 
