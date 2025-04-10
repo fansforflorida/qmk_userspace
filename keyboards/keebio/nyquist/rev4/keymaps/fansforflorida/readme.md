@@ -6,14 +6,13 @@ Here is a brief summary of my layers:
 
 * Layer 0: Mac layout. The key next to A is Command.
 * Layer 1: Windows/Linux layout. The key next to A is Ctrl.
-* Layer 2: Navigation and Fn layer (activated by holding the left space key). For example:
-  * F1-F10 are on the number row
+* Layer 2: Navigation layer (activated by holding the left space key). For example:
   * Del is on Backspace
   * `[` is on `<`
   * `]` is on `>`
   * `\` is on `/`
   * `` ` `` is on `'`
-* Layer 3: Numpad layer (activated by holding the Fn key below Z). The numpad layer puts a tenkey right on my home row:
+* Layer 3: Fn and numpad layer (activated by holding the Fn key below Z). For example, F1-F10 are on the number row, and a tenkey is on my home row:
 
 ```
 Y U I
@@ -23,23 +22,11 @@ N M <
 
 My 2u space key is zero, and the up arrow key is dot. It is not a full numpad, but it is very handy for entering 2FA codes for login or numbers in a spreadsheet without reaching for an external numpad. It uses number row keys to avoid NumLock issues in Windows.
 
-## Layout
+![keymap](images/my_keymap.png)
 
-```
-┌───┬───┬───┬───┬───┬───┐   ┌───┬───┬───┬───┬───┬───┐
-│ =+│ 1!│ 2@│ 3#│ 4$│ 5%│   │ 6^│ 7&│ 8*│ 9(│ 0)│ -_│
-├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
-│Tab│ Q │ W │ E │ R │ T │   │ Y │ U │ I │ O │ P │ BS│
-├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
-│Cmd│ A │ S │ D │ F │ G │   │ H │ J │ K │ L │ ;:│ '"│
-├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
-│Sft│ Z │ X │ C │ V │ B │   │ N │ M │ ,<│ .>│ /?│Ent│
-├───┼───┼───┼───┼───┴───┤   ├───┴───┼───┼───┼───┼───┤
-│Ctl│ Fn│Win│Alt│spaceFN│   │ space │ up│lft│dwn│rht│
-└───┴───┴───┴───┴───────┘   └───────┴───┴───┴───┴───┘
-```
+## Keymap
 
-My Nyquist layout is based on my FoldKB layout:
+My Nyquist keymap is based on my FoldKB keymap:
 
 * The `=` key is at top left next to 1.
 * The `-` key is at the top right next to 0.
@@ -51,13 +38,11 @@ I use my left hand for modifiers, so I put those keys on the left half.
 
 I normally use my right thumb for spacebar, so I made the left spacebar dual function using [Layer-Tap](https://docs.qmk.fm/feature_layers?id=switching-and-toggling-layers). Hold it to access layer 2, but tap it for space. This way, I can hold spacebar with my left thumb and use IJKL for arrows, H and N for PgUp and PgDn, and U and O for Home and End with my right hand. This puts the navigation keys right on the home row.
 
-My FoldKB has a split right Shift key. The 1u
-
 Dedicated arrow keys are at the bottom right of the keyboard. Instead of the vim arrangement of left, down, up, right, I arranged my arrow keys like this: up, left, down, right. The left, down, and right arrow keys are in the same order as an inverted T arrow cluster; only up is in a different position.
 
-You can change any of the above using VIA, but there are a few features that I enabled in the firmware:
-
 ## Features
+
+You can change the keymap using VIA, but there are a few features that I enabled in the firmware:
 
 ### Caps Word
 
@@ -90,7 +75,7 @@ Only RGB underglow is enabled.
 
 ## Building
 
-If you have not only done so, set up QMK external userspace like this:
+If you have not only done so, set up a QMK external userspace like this:
 
 ```
 cd $HOME
