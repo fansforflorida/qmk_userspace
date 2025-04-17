@@ -22,7 +22,7 @@ layers:
     - [null, $$mdi:menu$$, null, null, {type: held}, null, null, null, null, null]
   FN:
     - [F12, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11]
-    - [Ins, "⇧⌘Q", null, null, null, null, 7, 8, 9, null, null, null]
+    - [null, "⇧⌘Q", null, null, null, null, 7, 8, 9, null, null, null]
     - [Caps Lock, $$mdi:volume-minus$$, $$mdi:volume-plus$$, $$mdi:volume-mute$$, null, null, 4, 5, 6, null, null, null]
     - [null, null, null, null, null, null, 1, 2, 3, null, null, {type: held}]
     - [null, {type: held}, "TG(1)", null, null, 0, ".", null, null, null]
