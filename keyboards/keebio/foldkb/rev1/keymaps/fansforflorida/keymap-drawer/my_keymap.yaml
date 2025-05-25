@@ -1,0 +1,33 @@
+layout:
+  qmk_keyboard: keebio/foldkb/rev1
+  layout_name: LAYOUT
+layers:
+  MAC:
+    - [ Mute, Esc, "=", 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, "-", "\\", Del ]
+    - [ Home, Tab, Q, W, E, R, T, Y, U, I, O, P, "[", "]", Back Space ]
+    - [ End, $$mdi:apple-keyboard-command$$, A, S, D, F, G, H, J, K, L, ;, "'", Enter ]
+    - [ PgUp, Shift, Z, X, C, V, B, N, M, ",", ., /, $$mdi:arrow-up-thick$$, FN ]
+    - [ PgDn, Ctrl, FN, $$mdi:microsoft-windows$$, Alt, {t: Space, h: NAV}, Space, $$mdi:microsoft-windows$$, $$mdi:arrow-left-thick$$, $$mdi:arrow-down-thick$$, $$mdi:arrow-right-thick$$ ]
+  WIN:
+    - [ null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null ]
+    - [ null, null, null, null, null, null, null, null, null, null, null, null, null, null, null ]
+    - [ null, Ctrl, null, null, null, null, null, null, null, null, null, null, null, null ]
+    - [ null, null, null, null, null, null, null, null, null, null, null, null, null, null ]
+    - [ null, null, null, null, null, null, null, null, null, null, null ]
+  FN:
+    - [ Toggle RGB Matrix, "`", null, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, Ins ]
+    - [ null, null, "⇧⌘Q", null, null, null, null, null, 7, 8, 9, null, null, null, null ]
+    - [ null, Caps Lock, null, null, null, null, null, null, 4, 5, 6, ":", "`", null ]
+    - [ null, null, "⇧⌘Z", null, null, null, null, null, 1, 2, 3, "?", null, {type: held} ]
+    - [ null, null, {type: held}, TG(1), null, null, 0, ., null, null, null ]
+  NAV:
+    - [ Toggle RGB Matrix, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null ]
+    - [ null, null, null, null, Mouse Wheel Up, null, null, null, Home, $$mdi:arrow-up-thick$$, End, null, null, null, null ]
+    - [ null, null, null, Home, Mouse Wheel Dn, End, null, PgUp, $$mdi:arrow-left-thick$$, $$mdi:arrow-down-thick$$, $$mdi:arrow-right-thick$$, null, "`", null ]
+    - [ null, null, null, null, null, null, null, PgDn, null, "[", "]", "\\", null, null ]
+    - [ null, null, null, null, null, {type: held}, Back Space, null, null, null, null ]
+combos:
+  - {p: [18, 19], k: "ESC", l: ["MAC"]}
+  - {p: [35, 36], k: "DEL", l: ["MAC"]}
+  - {p: [39, 40], k: "BSPC", l: ["MAC"]}
+  - {p: [40, 41], k: "ENT", l: ["MAC"]}

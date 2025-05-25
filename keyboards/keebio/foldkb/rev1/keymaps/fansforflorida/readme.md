@@ -22,3 +22,5 @@ Here is a brief summary of my layers:
 * Layer 1: Windows layout (Caps Lock is Ctrl). Press Fn+Windows to toggle this layer.
 * Layer 2: Numpad and Fn layer (F1-F12 keys, Caps Lock, Ins, etc.). The number pad uses number row keys to avoid NumLock issues in Windows.
 * Layer 3: extra navigation keys, since I am used to those keys there on my Nyquist.
+
+![keymap](images/my_keymap.png)
