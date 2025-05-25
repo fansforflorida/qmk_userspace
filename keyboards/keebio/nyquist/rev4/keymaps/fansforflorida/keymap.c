@@ -37,10 +37,13 @@ enum layer_names {
 #define SPC_FN2 LT(_NAV,KC_SPC)
 
 // MO(3) if held, Enter if tapped
-#define LT_ENT  LT(_FN,KC_ENT)
+#define LT_ENT LT(_FN,KC_ENT)
 
 // Shift-Command-Q: Log out of your macOS user account. You will be asked to confirm.
 #define LOGOFF LSG(KC_Q)
+
+// Shift-Command-Z: Reverse the undo command
+#define REDO LSG(KC_Z)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_MAC] = LAYOUT_ortho_5x12(
@@ -68,7 +71,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_F12,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
         _______, LOGOFF,  _______, _______, _______, _______, KC_7,    KC_8,    KC_9,    _______, _______, _______,
         KC_CAPS, KC_VOLD, KC_VOLU, KC_MUTE, _______, _______, KC_4,    KC_5,    KC_6,    _______, _______, _______,
-        _______, _______, _______, _______, _______, _______, KC_1,    KC_2,    KC_3,    _______, _______, _______,
+        _______, REDO,    _______, _______, _______, _______, KC_1,    KC_2,    KC_3,    _______, _______, _______,
         _______, _______, TG(1),   _______, _______, _______, KC_0,    KC_0,    KC_DOT,  _______, _______, _______
     ),
 };

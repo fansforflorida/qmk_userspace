@@ -1,4 +1,4 @@
-# Nyquist rev5
+# Nyquist rev4
 
 ## Layers
 
@@ -85,7 +85,7 @@ qmk config user.overlay_dir="$(realpath qmk_userspace)"
 Compile the firmware like this:
 
 ```
-qmk compile -kb keebio/nyquist/rev5 -km fansforflorida
+qmk compile -kb keebio/nyquist/rev4 -km fansforflorida
 ```
 
 ## Flashing
@@ -93,7 +93,7 @@ qmk compile -kb keebio/nyquist/rev5 -km fansforflorida
 Flash the firmware like this:
 
 ```
-qmk flash -kb keebio/nyquist/rev5 -km fansforflorida
+qmk flash -kb keebio/nyquist/rev4 -km fansforflorida
 ```
 
 You will need to flash both sides separately.
