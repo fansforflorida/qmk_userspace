@@ -94,3 +94,13 @@ bool process_detected_host_os_user(os_variant_t detected_os) {
     return false;
 }
 #endif
+
+#ifndef MAGIC_ENABLE
+uint16_t keycode_config(uint16_t keycode) {
+    return keycode;
+}
+
+uint8_t mod_config(uint8_t mod) {
+    return mod;
+}
+#endif
