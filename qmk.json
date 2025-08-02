@@ -3,7 +3,7 @@
     "build_targets": [
         ["1upkeyboards/pi60_rgb_v2", "fansforflorida"],
         ["crkbd/rev1", "fansforflorida"],
-        ["keebio/bdn9/rev2", "fansforflorida"],
+        ["keebio/bdn9/rev3", "fansforflorida"],
         ["keebio/foldkb/rev1", "fansforflorida"],
         ["keebio/nyquist/rev4", "fansforflorida"],
         ["keebio/nyquist/rev5", "fansforflorida"],
