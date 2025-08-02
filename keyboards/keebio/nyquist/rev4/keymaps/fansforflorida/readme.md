@@ -1,4 +1,20 @@
-# Nyquist rev4
+# Nyquist
+
+## Keymap
+
+My Nyquist keymap is based on my FoldKB keymap:
+
+* The `=` key is at top left next to 1.
+* The `-` key is at the top right next to 0.
+* Backspace is next to P.
+* The key next to A is Command for macOS or Ctrl for Windows/Linux.
+* The Ctrl, Fn, Windows, and Alt keys are in the lower left in the same order and position as my FoldKB.
+
+Dedicated arrow keys are at the bottom right of the keyboard. Instead of the typical vim arrangement of left, down, up, right, I arranged my arrow keys like this: up, left, down, right. The left, down, and right arrow keys are in the same order as an inverted T arrow cluster; only up is in a different position.
+
+I use my left hand for modifiers, so I put those keys on the left half.
+
+I normally use my right thumb for spacebar, so I made the left spacebar dual function using [Layer-Tap](https://docs.qmk.fm/feature_layers?id=switching-and-toggling-layers). Hold it to access my navigation layer, but tap it for space. This way, I can hold spacebar with my left thumb and use IJKL for arrows, H and N for PgUp and PgDn, and U and O for Home and End with my right hand. This puts the navigation keys right on the home row.
 
 ## Layers
 
@@ -24,22 +40,6 @@ My 2u space key is zero, and the up arrow key is dot. It is not a full numpad, b
 
 ![keymap](images/my_keymap.png)
 
-## Keymap
-
-My Nyquist keymap is based on my FoldKB keymap:
-
-* The `=` key is at top left next to 1.
-* The `-` key is at the top right next to 0.
-* Backspace is next to P.
-* The key next to A is Command for macOS or Ctrl for Windows/Linux.
-* The Ctrl, Fn, Windows, and Alt keys are in the lower left in the same order and position as my FoldKB.
-
-I use my left hand for modifiers, so I put those keys on the left half.
-
-I normally use my right thumb for spacebar, so I made the left spacebar dual function using [Layer-Tap](https://docs.qmk.fm/feature_layers?id=switching-and-toggling-layers). Hold it to access layer 2, but tap it for space. This way, I can hold spacebar with my left thumb and use IJKL for arrows, H and N for PgUp and PgDn, and U and O for Home and End with my right hand. This puts the navigation keys right on the home row.
-
-Dedicated arrow keys are at the bottom right of the keyboard. Instead of the vim arrangement of left, down, up, right, I arranged my arrow keys like this: up, left, down, right. The left, down, and right arrow keys are in the same order as an inverted T arrow cluster; only up is in a different position.
-
 ## Features
 
 You can change the keymap using VIA, but there are a few features that I enabled in the firmware:
@@ -55,7 +55,7 @@ I have defined the following combos:
 * J + K emits Backspace
 * D + F emits Del
 * K + L emits Enter
-* Q + W emits Esc
+* `=` + 1 emits Esc
 
 The one thing I liked when I used an X-Bows keyboard was the extra Backspace key between G and H. Instead of having to reach way up to the corner to hit Backspace, I could hit it with my right index finger. When I used a Lily58, I put Backspace on the extra key next to H and N. That way, I could still hit Backspace with my right index finger. I put Del on the extra key next to G and B, since is seemed symmetrical. J+K and D+F are the same idea, except I do not need to move my hand.
 
@@ -67,11 +67,11 @@ I like that the FoldKB has Home, End, PgUp, and PgDn keys on the left half of th
 
 ### OS Detection
 
-During USB setup, the keyboard makes a best guess at the host OS based on OS specific behavior. If the OS is neither macOS nor iOS, the keyboard activates layer 1.
+During USB setup, the keyboard makes a best guess at the host OS based on OS specific behavior. If the OS is neither macOS nor iOS, the keyboard activates my Windows/Linux layer.
 
 ### RGB Matrix Lighting
 
-Only RGB underglow is enabled.
+I prefer a clean aesthetic with minimal light effects, so I disabled RGB backlighting. However, I kept RGB underglow enabled because my Nyquist case has a frosted stripe in the mid-layer that creates a subtle ambient glow.
 
 ## Building
 
@@ -85,7 +85,7 @@ qmk config user.overlay_dir="$(realpath qmk_userspace)"
 Compile the firmware like this:
 
 ```
-qmk compile -kb keebio/nyquist/rev4 -km fansforflorida
+qmk compile -kb keebio/nyquist/rev5 -km fansforflorida
 ```
 
 ## Flashing
@@ -93,7 +93,7 @@ qmk compile -kb keebio/nyquist/rev4 -km fansforflorida
 Flash the firmware like this:
 
 ```
-qmk flash -kb keebio/nyquist/rev4 -km fansforflorida
+qmk flash -kb keebio/nyquist/rev5 -km fansforflorida
 ```
 
 You will need to flash both sides separately.
