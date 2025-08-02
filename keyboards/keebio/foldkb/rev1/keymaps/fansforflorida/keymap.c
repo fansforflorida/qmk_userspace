@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023-2024  John Hall
+ * Copyright (C) 2023-2025  John Hall
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -76,13 +76,11 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 const uint16_t PROGMEM combo_bspc[] = { KC_J, KC_K, COMBO_END };
 const uint16_t PROGMEM combo_del[] = { KC_D, KC_F, COMBO_END };
 const uint16_t PROGMEM combo_ent[] = { KC_K, KC_L, COMBO_END };
-const uint16_t PROGMEM combo_esc[] = { KC_Q, KC_W, COMBO_END };
 
 combo_t key_combos[] = {
   COMBO(combo_bspc, KC_BSPC),
   COMBO(combo_del, KC_DEL),
   COMBO(combo_ent, KC_ENT),
-  COMBO(combo_esc, KC_ESC),
 };
 #endif
 
