@@ -1,5 +1,7 @@
 # FoldKB
 
+![Keebio FoldKB](images/foldkb.webp)
+
 My FoldKB layout is based on the [Datadesk SmartBoard UPC5000](https://www.reddit.com/r/MechanicalKeyboards/comments/cn4gc8/i_have_been_using_this_datadesk_smartboard/):
 
 * The `=` key is at top left next to 1.

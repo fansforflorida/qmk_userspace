@@ -1,5 +1,7 @@
 # Nyquist
 
+![Nyquist](images/nyquist.webp)
+
 ## Keymap
 
 My Nyquist keymap is based on my FoldKB keymap:
