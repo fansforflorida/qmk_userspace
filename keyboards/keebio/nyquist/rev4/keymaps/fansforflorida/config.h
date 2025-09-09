@@ -1,4 +1,4 @@
-/* Copyright 2024  John Hall
+/* Copyright (C) 2024-2025  John Hall
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,7 +15,7 @@
 
 #pragma once
 
-#define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD
+#define CAPS_WORD_INVERT_ON_SHIFT
 
 #define DYNAMIC_KEYMAP_LAYER_COUNT 10
 

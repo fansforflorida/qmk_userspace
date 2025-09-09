@@ -48,7 +48,7 @@ You can change the keymap using VIA, but there are a few features that I enabled
 
 ### Caps Word
 
-I enabled [Caps Word](https://docs.qmk.fm/feature_caps_word). Double tap left Shift to turn on Caps Word. While active, letters are capitalized and `-` becomes `_`. This makes it easier to type `PROGRAM_CONSTANTS`. I never use Caps Lock, but if I really need Caps Lock, I can access it on layer 2.
+I enabled [Caps Word](https://docs.qmk.fm/feature_caps_word). While active, letters are capitalized and `-` becomes `_`. This makes it easier to type `PROGRAM_CONSTANTS`. I never use Caps Lock, but if I really need Caps Lock, I can access it on a layer.
 
 ### Combos
 
@@ -74,6 +74,12 @@ During USB setup, the keyboard makes a best guess at the host OS based on OS spe
 ### RGB Matrix Lighting
 
 I prefer a clean aesthetic with minimal light effects, so I disabled RGB backlighting. However, I kept RGB underglow enabled because my Nyquist case has a frosted stripe in the mid-layer that creates a subtle ambient glow.
+
+### Tap Dance
+
+I implemented a custom tap dance feature on the comma key: a single tap outputs a comma, while a double tap activates Caps Word. Holding Shift during a double tap emits `<<` for guillemets or bitwise operations. Since my middle finger is stronger than my pinky, this combination is easier than double tapping Left Shift to turn on Caps Word.
+
+The idea was inspired by [this Reddit comment](https://www.reddit.com/r/ErgoMechKeyboards/comments/1n201er/comment/nb2tg1s/) from a user of the Hands Down Neu layout, where the comma sits on the home row. I use QWERTY, where the comma is on the bottom row under my middle finger.
 
 ## Building
 
