@@ -10,6 +10,7 @@ The Keebio FoldKB is a split ortholinear keyboard that is compatible with a stan
   - [Combos](#combos)
   - [Mouse Keys](#mouse-keys)
   - [OS Detection](#os-detection)
+  - [Tap Dance](#tap-dance)
 - [Building Instructions](#building-instructions)
 - [Flashing Instructions](#flashing-instructions)
 
@@ -75,6 +76,12 @@ I enabled [mouse keys](https://docs.qmk.fm/features/mouse_keys) and made the ESD
 ### OS Detection
 
 I enabled [OS detection](https://docs.qmk.fm/features/os_detection) to automatically switch to the appropriate layer. During USB setup, the keyboard makes a best guess at the host OS based on OS specific behavior. If the OS is neither macOS nor iOS, the keyboard activates my Windows/Linux layer.
+
+### Tap Dance
+
+I implemented a custom tap dance feature on the comma key: a single tap outputs a comma, while a double tap activates Caps Word. Holding Shift during a double tap emits `<<` for guillemets or bitwise operations. Since my middle finger is stronger than my pinky, this combination is easier than double tapping Left Shift to turn on Caps Word.
+
+The idea was inspired by [this Reddit comment](https://www.reddit.com/r/ErgoMechKeyboards/comments/1n201er/comment/nb2tg1s/) from a user of the Hands Down Neu layout, where the comma sits on the home row. I use QWERTY, where the comma is on the bottom row under my middle finger.
 
 ## Building Instructions
 

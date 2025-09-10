@@ -25,6 +25,39 @@
 
 #define SPC_FN3 LT(3,KC_SPC)
 
+#if defined(TAP_DANCE_ENABLE) && defined(CAPS_WORD_ENABLE)
+enum {
+    TD_COMMA_CAPS_WORD,
+};
+
+void dance_comma_caps_word(tap_dance_state_t *state, void *user_data) {
+    if (state->count == 1) {
+        // Single tap: send comma
+        tap_code(KC_COMM);
+    } else if (state->count == 2) {
+        if (get_mods() & MOD_MASK_SHIFT) {
+            // Shift held: guillemets or bit shift left (<<)
+            tap_code16(KC_LT);
+            tap_code16(KC_LT);
+        } else {
+            // Double tap: enable Caps Word
+            caps_word_on();
+        }
+    }
+}
+
+tap_dance_action_t tap_dance_actions[] = {
+    [TD_COMMA_CAPS_WORD] = ACTION_TAP_DANCE_FN(dance_comma_caps_word),
+};
+
+#define TD_COMM TD(TD_COMMA_CAPS_WORD)
+#else
+#   if defined(TAP_DANCE_ENABLE) || defined(CAPS_WORD_ENABLE)
+#   pragma message "CAPS_WORD_ENABLE = yes and TAP_DANCE_ENABLE = yes are both required for Comma/Caps Word"
+#   endif
+#define TD_COMM KC_COMM
+#endif
+
 enum layer_names {
     _MAC,
     _WIN,
@@ -37,7 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_MUTE, KC_ESC,  KC_EQL,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,        KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_BSLS, KC_DEL,
         KC_HOME,          KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,        KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSPC,
         KC_END,           KC_LGUI, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,        KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,          KC_ENT,
-        KC_PGUP,          KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,        KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_UP,   MO(2),
+        KC_PGUP,          KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,        KC_N,    KC_M,    TD_COMM, KC_DOT,  KC_SLSH, KC_UP,   MO(2),
         KC_PGDN,          KC_LCTL, MO(2),   KC_LGUI, KC_LALT, SPC_FN3, SPC_FN3,     KC_SPC,  KC_SPC,           KC_RGUI, KC_LEFT, KC_DOWN, KC_RGHT
     ),
     [_WIN] = LAYOUT(
