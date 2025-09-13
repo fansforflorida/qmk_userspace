@@ -8,6 +8,7 @@ The Keebio FoldKB is a split ortholinear keyboard that is compatible with a stan
 - [Features](#features)
   - [Caps Word](#caps-word)
   - [Combos](#combos)
+  - [Macros](#macros)
   - [Mouse Keys](#mouse-keys)
   - [OS Detection](#os-detection)
   - [Tap Dance](#tap-dance)
@@ -55,7 +56,7 @@ This layout is compatible with VIA, allowing real-time keymap changes without re
 
 ### Caps Word
 
-I enabled [Caps Word](https://docs.qmk.fm/feature_caps_word). Double tap left Shift to turn on Caps Word. While active, letters are capitalized and `-` becomes `_`. This makes it easier to type `PROGRAM_CONSTANTS`. I never use Caps Lock, but if I really need Caps Lock, I can access it on layer 2.
+I enabled [Caps Word](https://docs.qmk.fm/features/caps_word). Double tap left Shift to turn on Caps Word. While active, letters are capitalized and `-` becomes `_`. This makes it easier to type `PROGRAM_CONSTANTS`. I never use Caps Lock, but if I really need Caps Lock, I can access it on layer 2.
 
 ### Combos
 
@@ -69,6 +70,10 @@ I have defined the following [combos](https://docs.qmk.fm/features/combo):
 
 Notice that most of these keys are on the home row, so I do not need to move my hand to reach them. They are also not letters that you are likely to type together in a word, which reduces misfires. L+K is the only exception, but I would have to press them within 50ms of each other, so in practice, typing words like "walk" do not accidentally send Enter.
 
+### Macros
+
+I added a [macro](https://docs.qmk.fm/feature_macros) on Fn+Home that types `cd ~` and presses Enter to change to the home directory in terminal/PowerShell.
+
 ### Mouse Keys
 
 I enabled [mouse keys](https://docs.qmk.fm/features/mouse_keys) and made the ESDF keys on layer 2 navigation keys. E and D are mouse wheel up and down, and S and F are home and end. This way, I can hold spacebar with my left thumb and use E and D to scroll through a document.
@@ -79,7 +84,7 @@ I enabled [OS detection](https://docs.qmk.fm/features/os_detection) to automatic
 
 ### Tap Dance
 
-I implemented a custom tap dance feature on the comma key: a single tap outputs a comma, while a double tap activates Caps Word. Holding Shift during a double tap emits `<<` for guillemets or bitwise operations. Since my middle finger is stronger than my pinky, this combination is easier than double tapping Left Shift to turn on Caps Word.
+I implemented a custom [tap dance](https://docs.qmk.fm/features/tap_dance) feature on the comma key: a single tap outputs a comma, while a double tap activates Caps Word. Holding Shift during a double tap emits `<<` for guillemets or bitwise operations. Since my middle finger is stronger than my pinky, this combination is easier than double tapping Left Shift to turn on Caps Word.
 
 The idea was inspired by [this Reddit comment](https://www.reddit.com/r/ErgoMechKeyboards/comments/1n201er/comment/nb2tg1s/) from a user of the Hands Down Neu layout, where the comma sits on the home row. I use QWERTY, where the comma is on the bottom row under my middle finger.
 
