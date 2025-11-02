@@ -34,9 +34,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [2] = LAYOUT_numpad_5x4(
         _______, KC_CALC, KC_BSPC, _______,
-        RGB_MOD, RGB_VAI, RGB_HUI,
-        RGB_SPD, RGB_TOG, RGB_SPI, QK_BOOT,
-        RGB_RMOD,RGB_VAD, RGB_HUD,
+        RM_NEXT, RM_VALU, RM_HUEU,
+        RM_SPDD, RM_TOGG, RM_SPDU, QK_BOOT,
+        RM_PREV, RM_VALD, RM_HUED,
         _______,          _______, EE_CLR
     ),
 };
