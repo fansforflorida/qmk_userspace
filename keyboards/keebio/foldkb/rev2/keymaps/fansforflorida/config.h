@@ -4,3 +4,5 @@
 #pragma once
 
 #define CAPS_WORD_INVERT_ON_SHIFT
+
+#define ENCODER_DIRECTION_FLIP
