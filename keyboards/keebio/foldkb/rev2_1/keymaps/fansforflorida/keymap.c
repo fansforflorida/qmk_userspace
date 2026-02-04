@@ -110,8 +110,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_FN] = LAYOUT(
         RM_TOGG, KC_GRV,  _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,       KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_INS,
         CD_HOME,          _______, LOGOUT,  _______, _______, _______, _______,     _______, KC_7,    KC_8,    KC_9,    _______, _______, _______, _______,
-        _______,          KC_CAPS, _______, _______, _______, _______, _______,     _______, KC_4,    KC_5,    KC_6,    KC_COLN, KC_GRV,           EE_CLR,
-        _______,          _______, REDO,    _______, _______, _______, EE_CLR,      _______, KC_1,    KC_2,    KC_3,    KC_QUES, _______, _______,
+        _______,          KC_CAPS, _______, _______, _______, _______, _______,     _______, KC_4,    KC_5,    KC_6,    KC_COLN, KC_GRV,           _______,
+        _______,          _______, REDO,    _______, _______, _______, _______,     _______, KC_1,    KC_2,    KC_3,    KC_QUES, _______, _______,
         _______,          _______, _______, TG(1),   _______, _______, _______,     KC_0,    KC_0,             KC_DOT,  _______, _______, _______
     ),
     [_NAV] = LAYOUT(
@@ -122,6 +122,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,          _______, _______, _______, _______, _______, _______,     KC_BSPC, KC_BSPC,          _______, _______, _______, _______
     ),
 };
+
+#ifdef ENCODER_MAP_ENABLE
+const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
+    [_MAC] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
+    [_WIN] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
+    [_FN] = { ENCODER_CCW_CW(RM_VALD, RM_VALU) },
+    [_NAV] = { ENCODER_CCW_CW(RM_VALD, RM_VALU) },
+};
+#endif
 
 void keyboard_post_init_user(void) {
     rgb_matrix_set_flags_noeeprom(LED_FLAG_UNDERGLOW);
