@@ -13,6 +13,7 @@ The Keebio FoldKB is a split ortholinear keyboard that is compatible with a stan
   - [Macros](#macros)
   - [Mouse Keys](#mouse-keys)
   - [OS Detection](#os-detection)
+  - [RGB](#rgb)
   - [Tap Dance](#tap-dance)
 - [Building Instructions](#building-instructions)
 - [Flashing Instructions](#flashing-instructions)
@@ -25,15 +26,15 @@ My FoldKB layout is inspired by the [Datadesk SmartBoard UPC5000](https://www.re
 
 - The `=` key is at top left next to 1.
 - The Control, Fn, Windows, and Alt keys on the left are in the same positions as the Datadesk SmartBoard.
-- The modifier key in the L column is the Windows key; I use this for Windows+L on Windows.
+- The modifier key in the L column is the Windows key. I use this for Windows+L on Windows.
 
-The Caps Lock key is Command for macOS or Ctrl for Windows. This is very comfortable; instead of reaching way down to the corner of the keyboard for Ctrl, just move your pinky over one column from A to Caps Lock. It also maintains muscle memory for physical key combinations; for example, "copy" is always CapsLock+C, regardless of whether you are using Mac or Windows.
+The Caps Lock key is Command for macOS or Ctrl for Windows. This is very comfortable. Instead of reaching way down to the corner of the keyboard for Ctrl, just move your pinky over one column from A to Caps Lock. It also maintains muscle memory for physical key combinations. For example, "copy" is always CapsLock+C, regardless of whether you are using Mac or Windows.
 
 I initially configured the bottom right keys with Mod-Tap (for example, hold right Shift for Shift but tap it for up arrow) but found I never used them as modifiers. I made them dedicated arrow keys instead.
 
-The Backspace key is split and is home to backslash/pipe and Del.
+The 2u Backspace key is split into backslash/pipe and Delete. The Backspace function moves to the position normally occupied by backslash/pipe.
 
-The Backspace key takes the place of backslash/pipe.
+I have reviewed both the [original FoldKB](https://youtu.be/TcaBeJCXwDg) and the [FoldKB rev2.1](https://youtu.be/ZkBdGoLbNAw) on YouTube if you want to see the keyboard in action.
 
 ## Layers
 
@@ -46,7 +47,7 @@ Here is a brief summary of my layers:
 |2|Function/Numpad|Hold Fn key|
 |3|Navigation|Hold left space|
 
-I split the right Shift key, so I have a 1u Fn key on the right half and a 1.25u Fn key on the left half.
+I split the right Shift key into an up arrow key and a Fn key. This gives me a 1u Fn key on the right half and a 1.25u Fn key on the left half.
 
 I almost always use my right thumb for spacebar, so the left spacebar is SpaceFN to layer 3.
 
@@ -70,7 +71,7 @@ I have defined the following [combos](https://docs.qmk.fm/features/combo):
 |D + F|Delete|
 |K + L|Enter|
 
-Notice that most of these keys are on the home row, so I do not need to move my hand to reach them. They are also not letters that you are likely to type together in a word, which reduces misfires. L+K is the only exception, but I would have to press them within 50ms of each other, so in practice, typing words like "walk" do not accidentally send Enter.
+Notice that these keys are on the home row, so I do not need to move my hand to reach them. They are also not letters that you are likely to type together in a word, which reduces misfires. L+K is the only exception, but I would have to press them within 50ms of each other, so in practice, typing words like "walk" do not accidentally send Enter.
 
 ### Encoder
 
@@ -86,7 +87,16 @@ I enabled [mouse keys](https://docs.qmk.fm/features/mouse_keys) and made the ESD
 
 ### OS Detection
 
-I enabled [OS detection](https://docs.qmk.fm/features/os_detection) to automatically switch to the appropriate layer. During USB setup, the keyboard makes a best guess at the host OS based on OS specific behavior. If the OS is neither macOS nor iOS, the keyboard activates my Windows/Linux layer.
+I enabled [OS detection](https://docs.qmk.fm/features/os_detection) to automatically switch to the appropriate layer. During USB setup, the keyboard makes a best guess at the host OS based on OS specific behavior. If the OS is neither macOS nor iOS, the keyboard automatically activates the Windows/Linux layer (Layer 1); otherwise, it uses the default macOS layer (Layer 0).
+
+### RGB
+
+Personally, I prefer the look of underglow only. I think it gives the keyboard a cleaner look, especially with a translucent case layer. I customized my firmware so that only the RGB underglow is on by default. I also customized the behavior of the `RM_TOGG` key code to cycle through four RGB modes:
+
+1. Underglow only
+2. Per-key RGB only
+3. All RGB off
+4. All RGB on
 
 ### Tap Dance
 
@@ -96,7 +106,7 @@ The idea was inspired by [this Reddit comment](https://www.reddit.com/r/ErgoMech
 
 ## Building Instructions
 
-If you have not only done so, set up a QMK external userspace like this:
+If you have not already done so, set up a QMK external userspace like this:
 
 ```bash
 cd $HOME
