@@ -1,6 +1,6 @@
 # FoldKB
 
-The Keebio FoldKB is a split ortholinear keyboard that is compatible with a standard keycap set.
+The Keebio FoldKB is a split ortholinear keyboard that is compatible with a standard keycap set. Revision 1 used an ATmega32u4 controller, required soldering switches, and supported optional single-color LEDs. Revision 2.1 upgraded to an STM32G431 controller, added Kailh hot swap sockets, replaced single-color LEDs with north-facing per-key RGB and 8 underglow LEDs per half, and added ESD protection.
 
 ## Table of Contents
 
@@ -59,7 +59,7 @@ This layout is compatible with VIA, allowing real-time keymap changes without re
 
 ### Caps Word
 
-I enabled [Caps Word](https://docs.qmk.fm/features/caps_word). Double tap left Shift to turn on Caps Word. While active, letters are capitalized and `-` becomes `_`. This makes it easier to type `PROGRAM_CONSTANTS`. I never use Caps Lock, but if I really need Caps Lock, I can access it on layer 2.
+I enabled [Caps Word](https://docs.qmk.fm/features/caps_word). Double tap left Shift to turn on Caps Word. While active, letters are capitalized and `-` becomes `_`. This makes it easier to type `PROGRAM_CONSTANTS`. I never use Caps Lock, but if I really need Caps Lock, I can access it on layer 2. With `CAPS_WORD_INVERT_ON_SHIFT` enabled, holding Shift while Caps Word is active temporarily inverts the behavior, outputting lowercase letters.
 
 ### Combos
 
@@ -75,7 +75,7 @@ Notice that these keys are on the home row, so I do not need to move my hand to 
 
 ### Encoder
 
-I configured the rotary encoder using [encoder map](https://docs.qmk.fm/features/encoders#encoder-map). On the default layers (macOS and Windows), the encoder controls volume. On the Function and Navigation layers, it adjusts RGB brightness instead.
+I configured the rotary encoder using [encoder map](https://docs.qmk.fm/features/encoders#encoder-map). On the default layers (macOS and Windows), the encoder controls volume. On the Function and Navigation layers, it adjusts RGB brightness instead. Pressing the encoder button mutes audio on the default layers, and cycles RGB modes on the Function and Navigation layers.
 
 ### Macros
 
@@ -83,7 +83,7 @@ I added a [macro](https://docs.qmk.fm/feature_macros) on Fn+Home that types `cd 
 
 ### Mouse Keys
 
-I enabled [mouse keys](https://docs.qmk.fm/features/mouse_keys) and made the ESDF keys on layer 2 navigation keys. E and D are mouse wheel up and down, and S and F are home and end. This way, I can hold spacebar with my left thumb and use E and D to scroll through a document.
+I enabled [mouse keys](https://docs.qmk.fm/features/mouse_keys) and made the ESDF keys on layer 3 navigation keys. E and D are mouse wheel up and down, and S and F are home and end. This way, I can hold spacebar with my left thumb and use E and D to scroll through a document.
 
 ### OS Detection
 
