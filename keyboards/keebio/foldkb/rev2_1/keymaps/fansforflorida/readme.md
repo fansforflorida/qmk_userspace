@@ -1,9 +1,12 @@
 # FoldKB
 
-The Keebio FoldKB is a split ortholinear keyboard that is compatible with a standard keycap set. Revision 1 used an ATmega32u4 controller, required soldering switches, and supported optional single-color LEDs. Revision 2.1 upgraded to an STM32G431 controller, added Kailh hot swap sockets, replaced single-color LEDs with north-facing per-key RGB and 8 underglow LEDs per half, and added ESD protection.
+The Keebio FoldKB is a split ortholinear keyboard that is compatible with a standard keycap set.
+
+![Keebio FoldKB](images/foldkb.webp)
 
 ## Table of Contents
 
+- [PCB Revisions](#pcb-revisions)
 - [Keymap Overview](#keymap-overview)
 - [Layers](#layers)
 - [Features](#features)
@@ -18,7 +21,22 @@ The Keebio FoldKB is a split ortholinear keyboard that is compatible with a stan
 - [Building Instructions](#building-instructions)
 - [Flashing Instructions](#flashing-instructions)
 
-![Keebio FoldKB](images/foldkb.webp)
+## PCB Revisions
+
+The FoldKB has been produced in three PCB revisions. The table below summarizes the hardware changes for each revision.
+
+| Feature | Rev1 | Rev2.0 | Rev2.1 |
+| ------- | ---- | ------ | ------ |
+| Microcontroller | ATmega32u4 | STM32G431 | STM32G431 |
+| Hot swap | No | Yes | Yes |
+| Per-key lighting | Single-color LED | RGB | RGB |
+| LED direction | South-facing | North-facing | North-facing |
+| Underglow | Yes (RGB) | No | Yes (RGB) |
+| ESD protection | No | Yes | Yes |
+| Backslash key width | 1.5u | 1u | 1.5u |
+| Switch compatibility | MX | MX | MX |
+| Mounting | Sandwich | Sandwich | Sandwich |
+| Firmware | QMK/VIA | QMK/VIA | QMK/VIA |
 
 ## Keymap Overview
 
@@ -59,7 +77,7 @@ This layout is compatible with VIA, allowing real-time keymap changes without re
 
 ### Caps Word
 
-I enabled [Caps Word](https://docs.qmk.fm/features/caps_word). Double tap left Shift to turn on Caps Word. While active, letters are capitalized and `-` becomes `_`. This makes it easier to type `PROGRAM_CONSTANTS`. I never use Caps Lock, but if I really need Caps Lock, I can access it on layer 2. With `CAPS_WORD_INVERT_ON_SHIFT` enabled, holding Shift while Caps Word is active temporarily inverts the behavior, outputting lowercase letters.
+I enabled [Caps Word](https://docs.qmk.fm/features/caps_word). Double tap left Shift to turn on Caps Word. While active, letters are capitalized and `-` becomes `_`. This makes it easier to type `PROGRAM_CONSTANTS`. I never use Caps Lock, but if I really need Caps Lock, I can access it on layer 2. I enabled `CAPS_WORD_INVERT_ON_SHIFT`, so holding Shift while Caps Word is active temporarily inverts the behavior, outputting lowercase letters.
 
 ### Combos
 
