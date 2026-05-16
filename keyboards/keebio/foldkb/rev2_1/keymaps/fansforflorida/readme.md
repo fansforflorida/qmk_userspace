@@ -25,18 +25,18 @@ The Keebio FoldKB is a split ortholinear keyboard that is compatible with a stan
 
 The FoldKB has been produced in three PCB revisions. The table below summarizes the hardware changes for each revision.
 
-| Feature | Rev1 | Rev2.0 | Rev2.1 |
-| ------- | ---- | ------ | ------ |
-| Microcontroller | ATmega32u4 | STM32G431 | STM32G431 |
-| Hot swap | No | Yes | Yes |
-| Per-key lighting | Single-color LED | RGB | RGB |
-| LED direction | South-facing | North-facing | North-facing |
-| Underglow | Yes (RGB) | No | Yes (RGB) |
-| ESD protection | No | Yes | Yes |
-| Backslash key width | 1.5u | 1u | 1.5u |
-| Switch compatibility | MX | MX | MX |
-| Mounting | Sandwich | Sandwich | Sandwich |
-| Firmware | QMK/VIA | QMK/VIA | QMK/VIA |
+| Feature              | Rev1             | Rev2.0       | Rev2.1       |
+| -------------------- | ---------------- | ------------ | ------------ |
+| Microcontroller      | ATmega32u4       | STM32G431    | STM32G431    |
+| Hot swap             | No               | Yes          | Yes          |
+| Per-key lighting     | Single-color LED | RGB          | RGB          |
+| LED direction        | South-facing     | North-facing | North-facing |
+| Underglow            | Yes (RGB)        | No           | Yes (RGB)    |
+| ESD protection       | No               | Yes          | Yes          |
+| Backslash key width  | 1.5u             | 1u           | 1.5u         |
+| Switch compatibility | MX               | MX           | MX           |
+| Mounting             | Sandwich         | Sandwich     | Sandwich     |
+| Firmware             | QMK/VIA          | QMK/VIA      | QMK/VIA      |
 
 ## Keymap Overview
 
@@ -58,14 +58,14 @@ I have reviewed both the [original FoldKB](https://youtu.be/TcaBeJCXwDg) and the
 
 Here is a brief summary of my layers:
 
-|Layer|Purpose|Activation|
-|---|---|---|
-|0|macOS (Caps Lock = Command)|Default layer|
-|1|Windows/Linux (Caps Lock = Ctrl)|Press Fn + Windows to toggle|
-|2|Function/Numpad|Hold Fn key|
-|3|Navigation|Hold left space|
+| Layer | Purpose                          | Activation                   |
+| ----- | -------------------------------- | ---------------------------- |
+| 0     | macOS (Caps Lock = Command)      | Default layer                |
+| 1     | Windows/Linux (Caps Lock = Ctrl) | Press Fn + Windows to toggle |
+| 2     | Function/Numpad                  | Hold Fn key                  |
+| 3     | Navigation                       | Hold left space              |
 
-I split the right Shift key into an up arrow key and a Fn key. This gives me a 1u Fn key on the right half and a 1.25u Fn key on the left half.
+I split the right Shift key into an up arrow key and an Fn key. This gives me a 1u Fn key on the right half and a 1.25u Fn key on the left half.
 
 I almost always use my right thumb for spacebar, so the left spacebar is SpaceFN to layer 3.
 
@@ -83,13 +83,21 @@ I enabled [Caps Word](https://docs.qmk.fm/features/caps_word). Double tap left S
 
 I have defined the following [combos](https://docs.qmk.fm/features/combo):
 
-|Keys|Output|
-|---|---|
-|J + K|Backspace|
-|D + F|Delete|
-|K + L|Enter|
+| Keys  | Output    |
+| ----- | --------- |
+| J + K | Backspace |
+| D + F | Delete    |
+| K + L | Enter     |
 
-Notice that these keys are on the home row, so I do not need to move my hand to reach them. They are also not letters that you are likely to type together in a word, which reduces misfires. L+K is the only exception, but I would have to press them within 50ms of each other, so in practice, typing words like "walk" do not accidentally send Enter.
+My choice of combos evolved from my keyboard journey.
+
+The X-Bows keyboard had an extra Backspace key in the middle of the keyboard between G and H. That was about the only thing I liked about that keyboard. Instead of having to reach way up to the corner to hit Backspace, I could hit it with my right index finger.
+
+When I used a Lily58, I put Backspace on the extra key next to H and N. That way, I could still hit Backspace with my right index finger. I put Del on the extra key next to G and B, since it seemed symmetrical.
+
+The combos J+K and D+F are the same idea. I can still hit Backspace with my right index finger.
+
+Notice that these keys are on the home row, so I do not need to move my hand to reach them. They are also not [common bigrams](https://blogs.sas.com/content/iml/2014/09/26/bigrams.html), which reduces misfires. L+K is the only exception. However, I would have to press them within 50ms of each other, so in practice typing words like "walk" or "milk" do not accidentally send Enter.
 
 ### Encoder
 
@@ -101,7 +109,7 @@ I added a [macro](https://docs.qmk.fm/feature_macros) on Fn+Home that types `cd 
 
 ### Mouse Keys
 
-I enabled [mouse keys](https://docs.qmk.fm/features/mouse_keys) and made the ESDF keys on layer 3 navigation keys. E and D are mouse wheel up and down, and S and F are home and end. This way, I can hold spacebar with my left thumb and use E and D to scroll through a document.
+I enabled [mouse keys](https://docs.qmk.fm/features/mouse_keys) and made the ESDF keys on layer 3 navigation keys. E and D are mouse wheel up and down, and S and F are the Home and End keys. This way, I can hold spacebar with my left thumb and use E and D to scroll through a document.
 
 ### OS Detection
 
@@ -109,7 +117,7 @@ I enabled [OS detection](https://docs.qmk.fm/features/os_detection) to automatic
 
 ### RGB
 
-Personally, I prefer the look of underglow only. I think it gives the keyboard a cleaner look, especially with a translucent case layer. I customized my firmware so that only the RGB underglow is on by default. I also customized the behavior of the `RM_TOGG` key code to cycle through four RGB modes:
+Personally, I prefer the look of underglow only. I think it gives the keyboard a cleaner look, especially with a translucent middle layer. I customized my firmware so that only the RGB underglow is on by default. I also customized the behavior of the `RM_TOGG` key code to cycle through four RGB modes:
 
 1. Underglow only
 2. Per-key RGB only
