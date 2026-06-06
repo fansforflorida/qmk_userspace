@@ -1,4 +1,4 @@
-/* Copyright 2024  John Hall
+/* Copyright 2024-2026  John Hall
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,15 +17,13 @@
 
 /* Define indicator LED indices, used for lighting effects  */
 #define CAPS_LED_INDEX 45
+#define LWIN_LED_INDEX 77
+#define RWIN_LED_INDEX 98
 
 enum layer_names {
-    _GAME,
-    _WIN,
+    _BASE,
     _FN,
 };
-
-/* Momentarily activates _FN layer when held, Caps Lock when tapped*/
-#define LT_CAPS LT(_FN, KC_CAPS)
 
 /* Right Shift when held, up arrow when tapped */
 #define MT_UP MT(MOD_RSFT, KC_UP)
@@ -41,20 +39,12 @@ enum layer_names {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-    [_GAME] = LAYOUT_60_ansi(
+    [_BASE] = LAYOUT_60_ansi(
         KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSPC,
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSLS,
         KC_CAPS, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, KC_ENT,
-        KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,          KC_UP,
-        KC_LCTL, XXXXXXX, KC_LALT,                            KC_SPC,                             MO(2),   KC_LEFT, KC_DOWN, KC_RGHT
-    ),
-
-    [_WIN] = LAYOUT_60_ansi(
-        QK_GESC, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-        LT_CAPS, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          MT_UP,
-        _______, KC_LGUI, _______,                            _______,                            _______, MT_LEFT, MT_DOWN, MT_RGHT
+        KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,          MT_UP,
+        KC_LCTL, KC_LGUI, KC_LALT,                            KC_SPC,                             MO(1),   MT_LEFT, MT_DOWN, MT_RGHT
     ),
 
     [_FN] = LAYOUT_60_ansi(
@@ -62,8 +52,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, RM_SPDD, RM_VALU, RM_SPDU, _______, _______, _______, KC_HOME, KC_UP,   KC_END,  KC_PSCR, KC_SCRL, KC_PAUS, _______,
         _______, RM_PREV, RM_VALD, RM_NEXT, _______, _______, KC_PGUP, KC_LEFT, KC_DOWN, KC_RGHT, _______, KC_GRV,  _______,
         _______, _______, RM_TOGG, _______, _______, _______, KC_PGDN, KC_MUTE, KC_VOLD, KC_VOLU, _______,          _______,
-        _______, TG(1),   _______,                            _______,                            _______, _______, _______, QK_BOOT
-    )
+        EE_CLR,  GU_TOGG, _______,                            _______,                            _______, _______, _______, QK_BOOT
+    ),
 
 };
 
@@ -73,18 +63,6 @@ void keyboard_post_init_user(void) {
 }
 
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
-    /* Turn off RGB for inactive keys (for example, left Windows key on gaming layer) */
-    uint8_t layer = get_highest_layer(layer_state);
-    for (uint8_t row = 0; row < MATRIX_ROWS; ++row) {
-        for (uint8_t col = 0; col < MATRIX_COLS; ++col) {
-            uint8_t index = g_led_config.matrix_co[row][col];
-            if (index >= led_min && index < led_max && index != NO_LED &&
-                keymap_key_to_keycode(layer, (keypos_t){col,row}) == KC_NO) {
-                rgb_matrix_set_color(index, RGB_OFF);
-            }
-        }
-    }
-
     /* Indicate Caps Lock status */
     if (host_keyboard_led_state().caps_lock) {
         RGB_MATRIX_INDICATOR_SET_COLOR(CAPS_LED_INDEX, 255, 255, 255);
@@ -92,25 +70,24 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
         RGB_MATRIX_INDICATOR_SET_COLOR(CAPS_LED_INDEX, 0, 0, 0);
     }
 
+    /* Indicate Windows key status */
+    if (keymap_config.no_gui) {
+        RGB_MATRIX_INDICATOR_SET_COLOR(LWIN_LED_INDEX, 255, 255, 255);
+        RGB_MATRIX_INDICATOR_SET_COLOR(RWIN_LED_INDEX, 255, 255, 255);
+    } else {
+        if (!rgb_matrix_get_flags()) {
+            RGB_MATRIX_INDICATOR_SET_COLOR(LWIN_LED_INDEX, 0, 0, 0);
+            RGB_MATRIX_INDICATOR_SET_COLOR(RWIN_LED_INDEX, 0, 0, 0);
+        }
+    }
+
     return false;
 }
 #endif
 
-#ifdef KEY_CANCELLATION_ENABLE
-const key_cancellation_t PROGMEM key_cancellation_list[] = {
-    // on key down
-    //       |    key to be released
-    //       |     |
-    [0] = {KC_D, KC_A},
-    [1] = {KC_A, KC_D}
+#ifdef COMMUNITY_MODULE_SOCD_CLEANER_ENABLE
+socd_cleaner_t socd_opposing_pairs[] = {
+    {{KC_W, KC_S}, SOCD_CLEANER_LAST},
+    {{KC_A, KC_D}, SOCD_CLEANER_LAST},
 };
-
-layer_state_t layer_state_set_user(layer_state_t state) {
-    if (get_highest_layer(state) == _GAME) {
-        key_cancellation_enable();
-    } else {
-        key_cancellation_disable();
-    }
-    return state;
-}
 #endif

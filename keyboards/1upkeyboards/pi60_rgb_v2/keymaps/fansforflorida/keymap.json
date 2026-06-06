@@ -1,0 +1,6 @@
+{
+  "modules": [
+    "drashna/guarded_reset",
+    "getreuer/socd_cleaner"
+  ]
+}

@@ -1,4 +1,3 @@
 DEBOUNCE_TYPE = sym_eager_pk
-KEY_CANCELLATION_ENABLE = no
 LTO_ENABLE = yes
 VIA_ENABLE = yes
