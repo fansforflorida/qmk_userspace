@@ -23,7 +23,13 @@ The Keebio FoldKB is a split ortholinear keyboard that is compatible with a stan
 
 ## PCB Revisions
 
-The FoldKB has been produced in three PCB revisions. The table below summarizes the hardware changes for each revision.
+The FoldKB has been produced in three PCB revisions:
+
+- The **Rev1** PCB was produced in two sub-revisions with different labels: the prototype was labeled **FoldKB Rev. 1.0**, and the production board was labeled **FoldKB Rev. 1.1**. The prototype supported two rotary encoders while the production board supported only one, though the official QMK firmware for `keebio/foldkb/rev1` lists only one. Otherwise, the features in the table apply to both.
+- The **Rev2.0** PCB had a notable labeling quirk: the left half was labeled **FoldKB Rev. 2**, but the right half was labeled **FoldKB Rev. 1.1**.
+- The **Rev2.1** PCB is labeled **FoldKB Rev. 2.1**.
+
+The table below summarizes the hardware changes for each revision.
 
 | Feature              | Rev1             | Rev2.0       | Rev2.1       |
 | -------------------- | ---------------- | ------------ | ------------ |
