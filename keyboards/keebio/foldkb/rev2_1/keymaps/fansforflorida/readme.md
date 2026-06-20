@@ -132,7 +132,7 @@ Personally, I prefer the look of underglow only. I think it gives the keyboard a
 
 ### Tap Dance
 
-I implemented a custom [tap dance](https://docs.qmk.fm/features/tap_dance) feature on the comma key: a single tap outputs a comma, while a double tap activates Caps Word. Holding Shift during a double tap emits `<<` for guillemets or bitwise operations. Since my middle finger is stronger than my pinky, this combination is easier than double tapping Left Shift to turn on Caps Word.
+I implemented a custom [Tap Dance](https://docs.qmk.fm/features/tap_dance) behavior on the comma key so it does different things depending on how you press it: a single tap types a comma; a double tap turns on Caps Word; and holding Shift while double tapping types `<<` for guillemets or bitwise operations. Since my middle finger is stronger than my pinky, this combination is easier than double tapping Left Shift to turn on Caps Word.
 
 The idea was inspired by [this Reddit comment](https://www.reddit.com/r/ErgoMechKeyboards/comments/1n201er/comment/nb2tg1s/) from a user of the Hands Down Neu layout, where the comma sits on the home row. I use QWERTY, where the comma is on the bottom row under my middle finger.
 
