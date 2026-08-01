@@ -62,28 +62,18 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 #endif
 
 #ifdef RGB_MATRIX_ENABLE
-uint8_t rgb_to_hue(uint8_t rgb_mask) {
-    uint8_t r = (rgb_mask & 0b100) >> 2;
-    uint8_t g = (rgb_mask & 0b010) >> 1;
-    uint8_t b = rgb_mask & 0b001;
-    uint8_t c_max = r | g | b;
-    uint16_t h;
-    if (c_max == r) {
-        h = 60 * ((g - b + 6) % 6);
-    } else if (c_max == g) {
-        h = 60 * (b + 2);
-    } else if (c_max == b) {
-        return 170;
-    }
-    return h * 255 / 360;
-}
+HSV layer_hsv[] = {
+    {HSV_BLUE},
+    {HSV_GREEN},
+    {HSV_CYAN},
+    {HSV_RED},
+    {HSV_PURPLE},
+    {HSV_YELLOW},
+};
 
 hsv_t get_layer_hsv(uint8_t layer) {
-    hsv_t hsv = {
-        .h = rgb_to_hue(layer + 1),
-        .s = 255,
-        .v = rgb_matrix_get_val()
-    };
+    hsv_t hsv = layer_hsv[layer];
+    hsv.v = rgb_matrix_get_val(); // use current brightness
     return hsv;
 }
 
