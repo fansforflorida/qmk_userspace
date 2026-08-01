@@ -1,17 +1,10 @@
 # BDN9
 
-I have a Keebio BDN9 macropad configured with my frequently used IDE shortcuts like Debug Step Over, Debug Step Out, Run, Terminate, and so on. I use relegendable keycaps to label each key. Here is how I configured my BDN9:
+The Keebio BDN9 is a 3x3 macropad that supports up to 3 rotary encoders. The Keebio Jawn is a pretty aluminum case for the BDN9.
 
-| **Open Type**          | **Change Layers** | **Open File**   |
-|:-----------------------|:------------------|:----------------|
-| **Toggle Breakpoints** | **Run/Resume**    | **End**         |
-| **Step Over**          | **Step Into**     | **Step Return** |
+I have my BDN9 configured with my frequently used IDE shortcuts like Debug Step Over, Debug Step Out, Run, Terminate, and so on. I use separate layers for Visual Studio and Eclipse, but I do not need to memorize the shortcuts for each IDE. For example, the bottom-left key is always Debug Step Over, whether it is F10 in Visual Studio or F6 in Eclipse.
 
-I use separate layers for Visual Studio and Eclipse, but I do not need to memorize the actual keycodes—thanks to consistent physical placement. For example, the bottom-left key is always Debug Step Over, whether it is F10 in Visual Studio or F6 in Eclipse.
-
-This keymap demonstrates how to use layers in QMK.
-
----
+I customized the firmware to light each layer a different color to indicate the active layer. This keymap demonstrates how to implement per-layer RGB in QMK.
 
 ## RGB Matrix Lighting
 
@@ -29,27 +22,11 @@ Each layer is assigned a unique color for easy identification:
 - Layer 4: Purple
 - Layer 5: Yellow
 
-The firmware extracts RGB values from the binary representation of the layer number (plus one). For example:
-
-- **Bit 0** (LSB): Blue channel
-- **Bit 1**: Green channel
-- **Bit 2**: Red channel
-
-For example:
-
-- Layer 0 → (0+1) = 1 → binary `001` → RGB(0,0,1) = Blue
-- Layer 1 → (1+1) = 2 → binary `010` → RGB(0,1,0) = Green
-- Layer 2 → (2+1) = 3 → binary `011` → RGB(0,1,1) = Cyan
-
-The RGB values are then converted to HSV color space to maintain consistent brightness when switching layers.
-
-The code can be easily modified to use a predefined array of HSV colors instead of this binary mapping approach.
-
----
+Each layer's color is defined as an HSV value in the `layer_hsv[]` array in `keymap.c`, indexed by layer number. The brightness (V) is overridden with the current RGB matrix brightness so it stays consistent when switching layers.
 
 ## Building the Firmware
 
-If you have not only done so, set up QMK external userspace like this:
+If you have not already done so, set up QMK external userspace like this:
 
 ```bash
 cd $HOME
@@ -61,8 +38,6 @@ Then compile the firmware:
 ```bash
 qmk compile -kb keebio/bdn9/rev3 -km fansforflorida
 ```
-
----
 
 ## Flashing the Firmware
 
